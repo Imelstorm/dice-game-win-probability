@@ -1,5 +1,5 @@
 
-class ErrorWrongKForDice(ValueError):
+class WrongKForDiceError(ValueError):
 
     def __init__(self, min_value: int, max_value: int):
         self.__min_value = min_value

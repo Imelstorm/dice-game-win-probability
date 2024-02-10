@@ -5,5 +5,5 @@ class ApplicationService:
     def __init__(self, dice_service: DiceService):
         self.__dice_service = dice_service
 
-    async def calculate_win_probability(self, k: int | None) -> float | [float]:
+    async def calculate_win_probability(self, k: int | None) -> float | list[float]:
         return await self.__dice_service.calculate_win_probability(k)

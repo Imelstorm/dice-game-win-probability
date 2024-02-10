@@ -1,2 +1,2 @@
 from .service import DiceService
-from .errors import ErrorWrongKForDice
+from .errors import WrongKForDiceError

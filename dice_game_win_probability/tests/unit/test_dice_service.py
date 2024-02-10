@@ -4,7 +4,7 @@ import asyncio
 
 import pytest
 
-from dice_game_win_probability.domain.dice import DiceService, ErrorWrongKForDice
+from dice_game_win_probability.domain.dice import DiceService, WrongKForDiceError
 
 
 @pytest.mark.asyncio
@@ -24,12 +24,12 @@ async def test_calculate_win_probability_without_k():
 @pytest.mark.asyncio
 async def test_calculate_win_probability_with_lower_k_value():
     dice_service = DiceService()
-    with pytest.raises(ErrorWrongKForDice):
+    with pytest.raises(WrongKForDiceError):
         await dice_service.calculate_win_probability(5)
 
 
 @pytest.mark.asyncio
 async def test_calculate_win_probability_with_higher_k_value():
     dice_service = DiceService()
-    with pytest.raises(ErrorWrongKForDice):
+    with pytest.raises(WrongKForDiceError):
         await dice_service.calculate_win_probability(100)

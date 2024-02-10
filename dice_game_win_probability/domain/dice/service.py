@@ -1,4 +1,4 @@
-from .errors import ErrorWrongKForDice
+from .errors import WrongKForDiceError
 
 
 class DiceService:
@@ -8,16 +8,16 @@ class DiceService:
     def __init__(self):
         self.__probabilities: list[float] = []
 
-    async def calculate_win_probability(self, k: int | None = None) -> float | [float]:
+    async def calculate_win_probability(self, k: int | None = None) -> float | list[float]:
         if not k:
             return await self.__calculate_serial_probability()
 
         if self.__MIN_K > k or k > self.__MAX_K:
-            raise ErrorWrongKForDice(self.__MIN_K, self.__MAX_K)
+            raise WrongKForDiceError(self.__MIN_K, self.__MAX_K)
 
         return await self.__calculate_single_probability(k)
 
-    async def __calculate_serial_probability(self) -> [float]:
+    async def __calculate_serial_probability(self) -> list[float]:
         if self.__probabilities:
             return self.__probabilities
 
