@@ -1,6 +1,6 @@
 # dice-game-win-probability
 
-This FastAPI project calculates and delivers the probabilities of Bob winning a turn-based dice game against Alice. The competition involves alternately rolling a fair k-sided die, where the first player to roll a value equal to k wins. The API is designed to assess these probabilities for `k`-sided dice, ranging from `6` to `99`, considering Alice always gets the initial roll.
+This FastAPI project calculates and delivers the probabilities of Bob winning a turn-based dice game against Alice. The competition involves alternately rolling a fair k-sided die, where the first player to roll a value equal to k wins. The API is designed to assess these probabilities for `k`-sided dice, ranging from `6` to `99`.
 
 The API is versatile, allowing users to specify the `k` parameter through an optional header `K`. When this header is included, the endpoint responds with the probability for the specified `k`. If the header is omitted, the endpoint defaults to returning a comprehensive list of probabilities for the entire range of `6` to `99`.
 

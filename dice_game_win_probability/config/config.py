@@ -1,7 +1,7 @@
 from pydantic import BaseSettings
 
 
-_SERVICE_CONFIG_PREFIX = "DICE_GAME_WIN_PROBABILITY"
+_SERVICE_CONFIG_PREFIX = "DICE_GAME_WIN_PROBABILITY_"
 
 
 class Cors(BaseSettings):

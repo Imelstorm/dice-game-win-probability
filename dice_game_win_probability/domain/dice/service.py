@@ -1,23 +1,19 @@
-from typing import (
-    Union,
-    List,
-)
+from .errors import ErrorWrongKForDice
 
 
-class DiceService(object):
-
+class DiceService:
     __MIN_K = 6
     __MAX_K = 99
 
     def __init__(self):
         self.__probabilities: list[float] = []
 
-    async def calculate_win_probability(self, k: int | None) -> Union[float, List[float]]:
+    async def calculate_win_probability(self, k: int | None = None) -> float | [float]:
         if not k:
             return await self.__calculate_serial_probability()
 
-        if self.__MIN_K > k > self.__MAX_K:
-            raise ValueError(f"k should be between {self.__MIN_K} and {self.__MAX_K}")
+        if self.__MIN_K > k or k > self.__MAX_K:
+            raise ErrorWrongKForDice(self.__MIN_K, self.__MAX_K)
 
         return await self.__calculate_single_probability(k)
 
