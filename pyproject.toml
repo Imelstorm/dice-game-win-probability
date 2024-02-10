@@ -1,0 +1,118 @@
+[build-system]
+requires = ["hatchling >= 1.13.0", "hatch-requirements-txt"]
+build-backend = "hatchling.build"
+
+[tool.distutils.bdist_wheel]
+universal = true
+
+[project]
+name = "dice_game_win_probability"
+authors = [{name = "Imelstorm"}]
+description = "Dice game win probabilitu calculator"
+requires-python = ">=3.10"
+dynamic = ["version", "dependencies"]
+
+[tool.hatch.metadata.hooks.requirements_txt]
+files = ["requirements.txt"]
+
+[tool.hatch.version]
+path = "dice_game_win_probability/__build_info__.py"
+
+[project.scripts]
+dice_game_win_probability = "dice_game_win_probability.__main__:run"
+
+[project.optional-dependencies]
+linter = ["ruff"]
+
+[lint]
+pydocstyle.convention = "google"
+tab-size = 4
+unfixable = [
+    "ERA", # do not autoremove commented out code
+    "F401"
+]
+select = [
+    "A",      # flake8-builtins
+    "B",      # flake8-bugbear
+    "E", "W", # pycodestyle
+    "F",      # pyflake
+    "G",      # flake8-logging-format
+    "I",      # isort
+    "N",      # pep8-naming
+    "S",      # flake8-bandit
+    "Q",      # flake8-quotes
+    "C4",     # flake8-comprehensions
+    "UP",     # pyupgrade
+    "PT",     # flake8-pytest-style
+    "ANN",    # flake-8-annotations
+    "ARG",    # flake8-unused-arguments
+    "ERA",    # flake8-eradicate/eradicate
+    "ICN",    # flake8-import-conventions
+    "ISC",    # flake-8-impl-str-concat
+    "PIE",    # flake8-pie
+    "PGH",    # pygrep
+    "PYI",    # flake8-pyi
+    "RUF",    # ruff checks
+    "RSE",    # flake8-return
+    "SIM",    # flake8-simplify
+    "SLF",    # flake8-self
+    "TCH",    # flake8-type-checking
+    "TID",    # flake8-tidy-imports
+    "T10",    # flake8-debugger
+    "TRY",    # tryceraptors
+    "T20",    # flake-print
+    "PERF",   # perflint
+    "ASYNC",  # flake-async
+]
+ignore = [
+    "I001",
+    "ANN101",
+    "ANN102",
+    "TRY003",
+    "ISC002",
+    "DJ001",
+    "RSE102",
+    "S104"
+]
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401"]
+
+[tool.ruff]
+fix = false
+target-version = "py310"
+respect-gitignore = true
+line-length = 120
+exclude = [
+    ".git",
+    ".github",
+    "__pycache__",
+    ".cache",
+    "*venv*",
+    "tests",
+    "dist",
+    "build"
+]
+
+
+[tool.black]
+color = true
+preview = true
+line-length = 120
+target-version = ['py310']
+skip-string-normalization = true
+exclude = '''
+/(
+    \.eggs
+  | \.git
+  | \.tox
+  | \.venv
+  | _build
+  | build
+  | dist
+  | venv
+)/
+'''
+force-exclude = '''
+.*/setup\.py$
+'''
