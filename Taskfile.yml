@@ -29,6 +29,7 @@ tasks:
 
   install-project-dependencies:
     desc: Install project dependencies
+    cmd: pip install -r requirements.txt
 
   install-linter-dependencies:
     desc: Install linter with dependencies
